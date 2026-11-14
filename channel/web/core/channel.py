@@ -44,6 +44,12 @@ from config import conf
 from common.deployment import is_desktop
 
 
+def _should_auto_open_browser() -> bool:
+    if is_desktop():
+        return False
+    return os.environ.get("COW_NO_OPEN_BROWSER", "").strip().lower() not in ("1", "true", "yes")
+
+
 @singleton
 class WebChannel(ChatChannel):
     NOT_SUPPORT_REPLYTYPE = [ReplyType.VOICE]
@@ -1596,7 +1602,7 @@ class WebChannel(ChatChannel):
 
             # In desktop mode the Electron shell renders the UI, so don't pop a
             # browser window (also avoids issues when running detached/headless).
-            if not is_desktop():
+            if _should_auto_open_browser():
                 try:
                     import webbrowser
                     webbrowser.open(f"{scheme}://localhost:{port}")

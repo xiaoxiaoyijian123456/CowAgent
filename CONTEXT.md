@@ -9,9 +9,9 @@ CowAgent 通过微信官方 iLink API 接入个人微信的渠道，渠道类型
 _Avoid_: 微信公众号, 企业微信, 微信客服
 
 **CowAgent 工作区**:
-Agent 的持久状态根，原生安装默认位于 `~/cow`，保存会话、记忆、知识、技能和工作产物。
+Agent 的持久状态根，本安装中位于 `~/cow`，保存会话、记忆、知识、技能和工作产物。
 _Avoid_: 项目目录, 仓库目录
 
 **CowAgent 数据根**:
-CowAgent 的配置与运行凭证目录，由 `COW_DATA_DIR` 指定；未设置时使用仓库根存放 `config.json`。
+本安装中由 `COW_DATA_DIR=~/.cow` 指定，保存 `config.json`、微信登录凭证等敏感运行数据。
 _Avoid_: 工作区

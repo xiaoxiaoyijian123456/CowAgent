@@ -79,3 +79,7 @@ desktop/resources/bin/
 
 # Persistent Agent Mail credentials and npm runtime created by the optional compose overlay.
 docker/agent-mail-data/
+
+# Playwright browsers are downloaded per installation under COW_DATA_DIR;
+# never commit the platform-specific, multi-hundred-megabyte cache.
+ms-playwright/
