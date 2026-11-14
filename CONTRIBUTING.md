@@ -76,6 +76,9 @@ pip install -e .
 cow start
 ```
 
+For this fork's native macOS deployment, Git guardrails, testing and service
+operations, see `docs/native-macos-devops-manual.md`.
+
 ## Code of conduct
 
 Be respectful and constructive. We want CowAgent to be a welcoming place for

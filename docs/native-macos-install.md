@@ -3,6 +3,8 @@
 本安装把 CowAgent 直接运行在当前 macOS 用户下。Agent 使用 `full-access`，可以访问该账户的全部文件和网络资源，请先阅读 `docs/adr/0001-native-full-access-cowagent.md`。
 
 日常登录、对话、模型配置、微信、备份和故障处理见 `docs/native-macos-user-manual.md`。
+开发、测试、Git 约束、升级和服务排障见 `docs/native-macos-devops-manual.md`。
+产品定位、范围和验收见 `docs/product-document.md`；组件、数据流和安全边界见 `docs/architecture-document.md`。
 
 ## 安装
 

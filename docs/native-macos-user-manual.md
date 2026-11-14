@@ -380,4 +380,4 @@ cd /Users/steven/CowAgent
 bash scripts/update-native-macos.sh
 ```
 
-更多运维细节见 `docs/native-macos-install.md`。
+产品范围见 `docs/product-document.md`，系统架构见 `docs/architecture-document.md`，开发运维细节见 `docs/native-macos-devops-manual.md`。

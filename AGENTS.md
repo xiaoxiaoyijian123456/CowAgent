@@ -15,3 +15,8 @@
 - Deleting a large file in a later commit does not remove the blob from
   history. Rewrite unpushed commits before pushing if a large blob was already
   committed.
+
+## Native macOS operations
+
+- Follow `docs/native-macos-devops-manual.md` for installation, testing,
+  launchd operations, backups and large-file history recovery.
