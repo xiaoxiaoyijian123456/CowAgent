@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+
+ROOT=$(git rev-parse --show-toplevel)
+if command -v python3 >/dev/null 2>&1; then
+    PYTHON=python3
+elif command -v python >/dev/null 2>&1; then
+    PYTHON=python
+else
+    echo "Git hygiene guard requires Python 3." >&2
+    exit 1
+fi
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+    [ -n "${local_ref:-}" ] || continue
+    [ "$local_sha" != "0000000000000000000000000000000000000000" ] || continue
+    if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+        "$PYTHON" "$ROOT/scripts/check_git_file_sizes.py" new "$local_sha"
+    else
+        "$PYTHON" "$ROOT/scripts/check_git_file_sizes.py" range "$remote_sha" "$local_sha"
+    fi
+done

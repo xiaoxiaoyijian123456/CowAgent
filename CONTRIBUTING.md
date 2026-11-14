@@ -42,6 +42,27 @@ fix: reconnect Telegram websocket on timeout
 docs: clarify Docker setup
 ```
 
+### Git hygiene
+
+Enable the repository hooks once per clone:
+
+```bash
+bash scripts/install-git-hooks.sh
+```
+
+The hooks reject:
+
+- individual files over 20 MB
+- staged content over 50 MB, or newly pushed history over 100 MB
+- runtime caches such as `ms-playwright`, `.venv`, `node_modules`, browser
+  profiles and Playwright reports
+
+CI runs the same guard against newly introduced Git objects. Deleting a large
+file in a later commit does not remove the original blob from history; rewrite
+un-pushed commits before pushing. Generated assets should be downloaded at
+runtime or published as release artifacts, not committed or stored with Git
+LFS for browser caches.
+
 ## Development setup
 
 See the [Install from Source](https://docs.cowagent.ai/guide/manual-install)

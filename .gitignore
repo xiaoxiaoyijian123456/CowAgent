@@ -83,3 +83,7 @@ docker/agent-mail-data/
 # Playwright browsers are downloaded per installation under COW_DATA_DIR;
 # never commit the platform-specific, multi-hundred-megabyte cache.
 ms-playwright/
+playwright-report/
+test-results/
+blob-report/
+browser_profile/

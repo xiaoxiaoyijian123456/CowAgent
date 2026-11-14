@@ -1,0 +1,34 @@
+name: Git hygiene
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  file-size-guard:
+    name: Large files and generated caches
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check newly introduced Git objects
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          base="${BASE_SHA:-}"
+          if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ]; then
+            python scripts/check_git_file_sizes.py new HEAD
+          else
+            python scripts/check_git_file_sizes.py range "$base" HEAD
+          fi
